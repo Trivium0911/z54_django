@@ -4,11 +4,13 @@ from typing import Optional
 from task4.models import Numbers
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
+from django.views.generic import ListView
+
 
 def view(request: HttpRequest, obj=None) -> HttpResponse:
     name = ''
     try:
-        obj.Numbers.objects.get(name = name)
+        obj.Numbers.objects.get(name=name)
         n = obj.n
     except:
         n = -1
@@ -27,7 +29,7 @@ def task4(request: HttpRequest):
 
     username = get_user_name(request)
     if not username:
-         return HttpResponse(status=403)
+        return HttpResponse(status=403)
     name = "MyNumbers"
     obj: Tuple[Numbers, bool] = Numbers.objects.get_or_create(name=name)
     cell, _created = obj
@@ -54,30 +56,11 @@ def task4(request: HttpRequest):
                 return HttpResponse(cell.n)
 
 
-def info(request:HttpRequest) -> HttpResponse:
+def info(request: HttpRequest) -> HttpResponse:
     numbers = Numbers.objects.all()
-    return render (request, "task4/info.html", {"n": numbers})
+    return render(request, "task4/info.html", {"n": numbers})
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#class ShowNumbersView(ListView):
+  #  template_name = "task4/info.html"
+  #  model = Numbers
