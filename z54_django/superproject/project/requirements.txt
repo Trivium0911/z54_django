@@ -9,5 +9,5 @@ psycopg2
 dj-database-url
 django-ipware
 django
-django-cors-headers
-django-heroku
+django_cors_headers
+django_heroku
