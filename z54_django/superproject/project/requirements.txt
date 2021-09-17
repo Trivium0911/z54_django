@@ -1,4 +1,13 @@
-django
+fastapi
+uvicorn
+psycopg2-binary
+pytest
+pytest-asyncio
+httpx
+asyncpg
+psycopg2
 dj-database-url
+django-ipware
+delorean
+django
 django-cors-headers
-whitenoise
