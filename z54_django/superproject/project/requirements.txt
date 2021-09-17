@@ -8,6 +8,6 @@ asyncpg
 psycopg2
 dj-database-url
 django-ipware
-delorean
 django
 django-cors-headers
+django-heroku
