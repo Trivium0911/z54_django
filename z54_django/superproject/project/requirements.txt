@@ -2,5 +2,3 @@ django
 dj-database-url
 django-cors-headers
 whitenoise
-uvicorn
-fastapi
