@@ -1,6 +1,6 @@
 from django.http import HttpRequest, HttpResponse
 import json
-from typing import Optional
+from typing import Optional, Tuple
 from task4.models import Numbers
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
@@ -38,7 +38,7 @@ def task4(request: HttpRequest):
     if not body:
         return HttpResponse(status=422)
     else:
-        if type(body) is str:
+        if type(body) == str:
             if body == "stop" or body == '"stop"' or body == "'stop'":
                 counter = cell.n
                 cell.n = 0
@@ -46,12 +46,12 @@ def task4(request: HttpRequest):
                 return HttpResponse(counter)
             if body.isdigit() or body == "0":
                 return HttpResponse(status=422)
-        elif type(body) is int:
+        elif type(body) == int:
             if body <= -101 or body >= 101:
                 return HttpResponse(status=422)
 
             else:
-                cell.n += body
+                cell.n += body #
                 cell.save()
                 return HttpResponse(cell.n)
 

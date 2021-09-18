@@ -1,6 +1,5 @@
 import os
 from pathlib import Path
-import django_heroku
 import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -131,4 +130,3 @@ CORS_ALLOW_HEADERS = [
     "x-user",
 ]
 
-#django_heroku.settings(locals())
