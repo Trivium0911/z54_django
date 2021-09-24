@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<article>
+    <h1>{{ object.title }}</h1>
+    <p>
+    <form  action = "{% url 'all posts' %}">
+    <button> BACK TO ALL POSTS </button>
+    </form>
+    </p>
+    <p>
+        <form  action = "/blog/{{ object.pk }}/update">
+        <button> UPDATE POST </button>
+        </form>
+    </p>
+    <p>
+        <form  action ="/blog/{{ object.pk }}/delete">
+        <button> DELETE POST </button>
+        </form>
+    <p>
+    <hr>
+    <p>{{ post.content|default:"NO CONTENT" }}</p>
+</article>
+</body>
+</html>
