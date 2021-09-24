@@ -4,7 +4,7 @@ from typing import Optional, Tuple
 from task4.models import Numbers
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, TemplateView
 
 
 def view(request: HttpRequest, obj=None) -> HttpResponse:
@@ -51,16 +51,21 @@ def task4(request: HttpRequest):
                 return HttpResponse(status=422)
 
             else:
-                cell.n += body #
+                cell.n += body
                 cell.save()
                 return HttpResponse(cell.n)
 
 
 def info(request: HttpRequest) -> HttpResponse:
+
     numbers = Numbers.objects.all()
     return render(request, "task4/info.html", {"n": numbers})
 
 
-#class ShowNumbersView(ListView):
-  #  template_name = "task4/info.html"
-  #  model = Numbers
+class ShowNumbersView(ListView):
+    template_name = "task4/info.html"
+    model = Numbers
+
+class InfoView(TemplateView):
+    template_name = "task4/info.html"
+    extra_context = {"n": Numbers.objects.all()}

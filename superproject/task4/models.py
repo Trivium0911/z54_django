@@ -1,8 +1,9 @@
 from django.db import models
 
-
+class NumbersManager(models.Model):
+    pass
 class Numbers(models.Model):
-
+    objects = NumbersManager()
     name = models.TextField(unique=True)
     n = models.BigIntegerField(default=0)
 
