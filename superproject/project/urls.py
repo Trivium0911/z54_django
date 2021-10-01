@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.auth.views import LoginView
 from django.http import HttpResponse, HttpRequest
 from django.urls import path, include
 from task4.views import info
@@ -9,11 +10,13 @@ def hello_world(request: HttpRequest):
     return HttpResponse(x)
 
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hw/', hello_world),
     path('task4/', include("task4.urls")),
     path ("blog/", include ("blog.urls")),
+    path ("login/", LoginView.as_view(), name='login')
 ]
 
 

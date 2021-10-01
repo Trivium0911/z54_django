@@ -1,8 +1,13 @@
 import os
 from pathlib import Path
 import dj_database_url
+import dotenv
+from django.urls import reverse_lazy
 
+dotenv.load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
+PROJECT_DIR = BASE_DIR / 'project'
+PROJECT_TEMPLATES_DIR = PROJECT_DIR / 'maintemplates'
 
 
 
@@ -53,7 +58,9 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            PROJECT_DIR / 'maintemplates',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -132,3 +139,4 @@ CORS_ALLOW_HEADERS = [
     "x-user",
 ]
 
+LOGIN_REDIRECT_URL = reverse_lazy("blog:all")

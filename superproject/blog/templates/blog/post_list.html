@@ -7,20 +7,26 @@
 <body>
 <article>
     <h1>All posts</h1>
-        <a href="/blog/new/">NEW POST  </a>
+    {% if not user.is_anonymous %}
+        <a href= "{% url 'blog:new' %}"> NEW POST  </a>
+    {% else %}
+        <a href= "{% url 'login' %}"> LOG IN </a>
+    {% endif %}
     <hr>
     {% for post in object_list %}
         <section id="id_post_{{ post.pk }}">
             <a href="{{ post.get_absolute_url }}"><h2>{{ post.title }}</h2></a>
             <p>{{ post.content|default:"NO CONTENT" }}</p>
         </section>
-    {% empty %}
-        <p>(no posts)</p>
-    <p>
-        <form action="/blog/new/">
-        <button> CREATE </button>
-        </form>
-    </p>
+        {% empty %}
+            <p>(no posts)</p>
+        {% if not user.is_anonymous %}
+        <p>
+            <form action="/blog/new/">
+            <button> CREATE </button>
+            </form>
+        </p>
+        {% endif %}
     {% endfor %}
 </article>
 </body>
