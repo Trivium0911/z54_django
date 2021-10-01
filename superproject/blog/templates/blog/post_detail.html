@@ -8,17 +8,17 @@
 <article>
     <h1>{{ object.title }}</h1>
     <p>
-    <form  action = "{% url 'all posts' %}">
+    <form  action = "{% url 'blog:all' %}">
     <button> BACK TO ALL POSTS </button>
     </form>
     </p>
     <p>
-        <form  action = "/blog/{{ object.pk }}/update">
+        <form  action = "{% url 'blog:update' object.pk %}">
         <button> UPDATE POST </button>
         </form>
     </p>
     <p>
-        <form  action ="/blog/{{ object.pk }}/delete">
+        <form  action ="{% url 'blog:delete' object.pk %}">
         <button> DELETE POST </button>
         </form>
     <p>
