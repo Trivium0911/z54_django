@@ -7,8 +7,8 @@
 <body>
     <form method="post" >
         {% csrf_token %}
-        {{ form }}
-        <button type="submit">LOG IN</button>
+        {{ form.as_p }}
+        <button type="submit">{{ action|default:"LOG IN" }}</button>
     </form>
 
 </body>

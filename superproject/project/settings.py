@@ -12,7 +12,7 @@ PROJECT_TEMPLATES_DIR = PROJECT_DIR / 'maintemplates'
 
 
 
-SECRET_KEY = 'django-insecure-ic0%u(%cy40(l6p)yo0@&%a@2r7%*%5+ooh)bsi!xw$o=tj=29'
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 
 DEBUG = os.getenv("DEBUG")
@@ -99,7 +99,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+if DEBUG:
+    AUTH_PASSWORD_VALIDATORS = []
 
 
 
@@ -141,3 +142,4 @@ CORS_ALLOW_HEADERS = [
 ]
 
 LOGIN_REDIRECT_URL = reverse_lazy("blog:all")
+LOGOUT_REDIRECT_URL = reverse_lazy("blog:all")

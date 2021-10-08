@@ -5,18 +5,33 @@
     <title>Title</title>
 </head>
 <body>
+    <p> Me: {{ user }}</p>
+    {% if user.is_authenticated %}
+        <form  action = "{% url 'logout' %}">
+                <button> LOG OUT </button>
+        </form>
+    {% else %}
+    <p><form  action = "{% url 'login' %}">
+                <button> LOG IN </button>
+    </form></p>
+    <p><form  action = "{% url 'signup' %}">
+                <button> SIGN UP </button>
+    </form></p>
+    {% endif %}
 <article>
     <h1>All posts</h1>
     {% if not user.is_anonymous %}
         <a href= "{% url 'blog:new' %}"> NEW POST  </a>
     {% else %}
-        <a href= "{% url 'login' %}"> LOG IN </a>
+       <form  action = "{% url 'login' %}">
+                <button> LOG IN </button>
     {% endif %}
     <hr>
     {% for post in object_list %}
         <section id="id_post_{{ post.pk }}">
             <a href="{{ post.get_absolute_url }}"><h2>{{ post.title }}</h2></a>
             <p>{{ post.content|default:"NO CONTENT" }}</p>
+            <p>Author: {{ post.author }}</p>
         </section>
         {% empty %}
             <p>(no posts)</p>

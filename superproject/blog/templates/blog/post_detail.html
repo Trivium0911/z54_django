@@ -12,16 +12,18 @@
     <button> BACK TO ALL POSTS </button>
     </form>
     </p>
-    <p>
-        <form  action = "{% url 'blog:update' object.pk %}">
-        <button> UPDATE POST </button>
-        </form>
-    </p>
-    <p>
-        <form  action ="{% url 'blog:delete' object.pk %}">
-        <button> DELETE POST </button>
-        </form>
-    <p>
+    {% if object.author == user %}
+        <p>
+            <form  action = "{% url 'blog:update' object.pk %}">
+            <button> UPDATE POST </button>
+            </form>
+        </p>
+        <p>
+            <form  action ="{% url 'blog:delete' object.pk %}">
+            <button> DELETE POST </button>
+            </form>
+        <p>
+    {% endif %}
     <hr>
     <p>{{ post.content|default:"NO CONTENT" }}</p>
 </article>
