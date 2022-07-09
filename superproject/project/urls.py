@@ -12,15 +12,14 @@ def hello_world(request: HttpRequest):
     return HttpResponse(x)
 
 
-
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('hw/', hello_world),
-    path('task4/', include("task4.urls")),
-    path ("blog/", include ("blog.urls")),
-    path ("signup/", SignUpView.as_view(), name='signup'),
-    path ("login/", LoginView.as_view(), name='login'),
-    path ("logout/", LogoutView.as_view(), name='logout')
+        path('admin/', admin.site.urls),
+        path('hw/', hello_world),
+        path('task4/', include("task4.urls")),
+        path("blog/", include ("blog.urls")),
+        path("signup/", SignUpView.as_view(), name='signup'),
+        path("login/", LoginView.as_view(), name='login'),
+        path("logout/", LogoutView.as_view(), name='logout')
 ]
 
 

@@ -4,6 +4,8 @@ from django.urls import reverse_lazy
 from django.views.generic import  CreateView
 
 User = get_user_model()
+
+
 class SignUpView(CreateView):
     form_class = UserCreationForm
     template_name = "registration/login.html"
