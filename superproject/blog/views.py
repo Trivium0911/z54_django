@@ -25,7 +25,6 @@ class AllPostsView(BlogMixin, ListView):
         return super().get_queryset().filter(hidden=False).order_by("pk")[:PAGE_SIZE]
 
 
-
 class SinglePostsView(LoginRequiredMixin,BlogMixin,DetailView):
     pass
 
