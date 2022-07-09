@@ -10,8 +10,6 @@ PROJECT_DIR = BASE_DIR / 'project'
 PROJECT_TEMPLATES_DIR = PROJECT_DIR / 'maintemplates'
 
 
-
-
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 
@@ -22,9 +20,6 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
 ]
-
-
-
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -83,8 +78,6 @@ DATABASES = {
     }
 
 
-
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -103,7 +96,6 @@ if DEBUG:
     AUTH_PASSWORD_VALIDATORS = []
 
 
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -120,7 +112,6 @@ STATIC_URL = '/static/'
 
 if not DEBUG:
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
